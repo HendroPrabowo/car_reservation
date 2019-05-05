@@ -19,4 +19,16 @@ public class CarService {
         carRepository.findAll().forEach(cars::add);
         return cars;
     }
+
+    public Car findOne(int id){
+        return carRepository.findById(id).get();
+    }
+
+    public void save(Car car){
+        carRepository.save(car);
+    }
+
+    public void delete(int id){
+        carRepository.deleteById(id);
+    }
 }

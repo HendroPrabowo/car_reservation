@@ -22,4 +22,9 @@ public class CarController {
 
         return new ModelAndView("index", "cars", cars);
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
