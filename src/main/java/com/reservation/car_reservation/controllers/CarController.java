@@ -1,6 +1,6 @@
 package com.reservation.car_reservation.controllers;
 
-import com.reservation.car_reservation.models.Car;
+import com.reservation.car_reservation.models.Booking;
 import com.reservation.car_reservation.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class CarController {
 
     @GetMapping("/index")
     public ModelAndView index(ModelMap model){
-        List<Car> cars = carService.findAll();
+        List<Booking> cars = carService.findAll();
 
         return new ModelAndView("index", "cars", cars);
     }
@@ -26,5 +26,15 @@ public class CarController {
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @GetMapping("/booking")
+    public String booking(){
+        return "booking";
+    }
+
+    @GetMapping("/registrasi")
+    public String registrasi(){
+        return "registrasi";
     }
 }

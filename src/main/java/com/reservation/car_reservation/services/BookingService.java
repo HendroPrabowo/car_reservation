@@ -1,16 +1,15 @@
 package com.reservation.car_reservation.services;
+
 import com.reservation.car_reservation.models.Booking;
 import com.reservation.car_reservation.repository.CarRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class CarService {
+public class BookingService {
     private CarRepository carRepository;
 
-    public CarService(CarRepository carRepository) {
+    public BookingService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
