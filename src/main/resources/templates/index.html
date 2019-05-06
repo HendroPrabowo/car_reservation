@@ -3,7 +3,7 @@
 <head th:replace="layout :: head">
 </head>
 <body>
-<div class="container">
+<div class="container" id="app">
     <div class="jumbotron">
         <h1>All Cars</h1>
     </div>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h3>List All Car</h3>
+            <h3>Data Mobil dari Database</h3>
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
@@ -26,12 +26,46 @@
                 </tr>
                 </tbody>
             </table>
+            <br>
+            <h3>Data Mobil dari API ASP.NET</h3>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nama</th>
+                    <th>Plat</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in info">
+                    <td>{{item.id}}</td>
+                    <td>{{item.car_Name}}</td>
+                    <td>{{item.car_Plate}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="col-md-4"></div>
     </div>
 
     <footer th:replace="layout :: footer"></footer>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            info: "API tidak terhubung",
+        },
+        mounted () {
+            axios
+                .get('https://localhost:44361/api/cars')
+                .then(response => (this.info = response['data']));
+        }
+    })
+</script>
 
 </body>
 </html>
