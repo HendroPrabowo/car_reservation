@@ -1,5 +1,5 @@
 package com.reservation.car_reservation.services;
-import com.reservation.car_reservation.models.Booking;
+import com.reservation.car_reservation.models.Car;
 import com.reservation.car_reservation.repository.CarRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +14,17 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public List<Booking> findAll(){
-        List<Booking> cars = new ArrayList<>();
+    public List<Car> findAll(){
+        List<Car> cars = new ArrayList<>();
         carRepository.findAll().forEach(cars::add);
         return cars;
     }
 
-    public Booking findOne(int id){
+    public Car findOne(int id){
         return carRepository.findById(id).get();
     }
 
-    public void save(Booking car){
+    public void save(Car car){
         carRepository.save(car);
     }
 

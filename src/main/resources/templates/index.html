@@ -11,22 +11,6 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h3>Data Mobil dari Database</h3>
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Plat</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="car : ${cars}">
-                    <td th:text="${car.car_name}"></td>
-                    <td th:text="${car.car_plate}"></td>
-                </tr>
-                </tbody>
-            </table>
-            <br>
             <h3>Data Mobil dari API ASP.NET</h3>
             <table class="table table-bordered table-striped table-hover">
                 <thead>
@@ -34,6 +18,7 @@
                     <th>Id</th>
                     <th>Nama</th>
                     <th>Plat</th>
+                    <th>Booking</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +26,7 @@
                     <td>{{item.id}}</td>
                     <td>{{item.car_Name}}</td>
                     <td>{{item.car_Plate}}</td>
+                    <td><a :href="'/booking/'+item.id">Booking</a> </td>
                 </tr>
                 </tbody>
             </table>

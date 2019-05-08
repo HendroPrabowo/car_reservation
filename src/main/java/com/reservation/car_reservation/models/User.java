@@ -1,9 +1,7 @@
 package com.reservation.car_reservation.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "Users")
 public class User {

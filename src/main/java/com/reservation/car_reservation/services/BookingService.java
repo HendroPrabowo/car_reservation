@@ -1,33 +1,29 @@
 package com.reservation.car_reservation.services;
 
 import com.reservation.car_reservation.models.Booking;
-import com.reservation.car_reservation.repository.CarRepository;
+import com.reservation.car_reservation.repository.BookingRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BookingService {
-    private CarRepository carRepository;
+    private BookingRepository bookingRepository;
 
-    public BookingService(CarRepository carRepository) {
-        this.carRepository = carRepository;
-    }
+    public BookingService(BookingRepository bookingRepository){ this.bookingRepository = bookingRepository; }
 
     public List<Booking> findAll(){
-        List<Booking> cars = new ArrayList<>();
-        carRepository.findAll().forEach(cars::add);
-        return cars;
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll().forEach(bookings::add);
+        return bookings;
     }
 
-    public Booking findOne(int id){
-        return carRepository.findById(id).get();
+    public void save(Booking booking){
+        bookingRepository.save(booking);
     }
 
-    public void save(Booking car){
-        carRepository.save(car);
-    }
-
-    public void delete(int id){
-        carRepository.deleteById(id);
+    public void delete(Booking booking){
+        this.bookingRepository.delete(booking);
     }
 }
