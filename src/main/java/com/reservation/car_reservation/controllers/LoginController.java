@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.xml.ws.soap.Addressing;
+import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -26,11 +27,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password){
-        User user = userService.login(username,password);
-        if(user == null){
+    public String login(@ModelAttribute("user") User user,BindingResult bindingResult){
+        User users = userService.login(user.getUsername(),user.getPassword());
+        if(users == null){
             return "login";
         }
-        return "redirect:/index/"+user.getId();
+        return "redirect:/index/"+users.getId();
     }
 }
