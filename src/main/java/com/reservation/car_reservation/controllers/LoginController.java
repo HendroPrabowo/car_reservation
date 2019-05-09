@@ -27,11 +27,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") User user,BindingResult bindingResult){
-        User users = userService.login(user.getUsername(),user.getPassword());
-        if(users == null){
-            return "login";
+    public String login(@ModelAttribute("user") User user,BindingResult bindingResult) {
+        User user_login = userService.login(user.getUsername(), user.getPassword());
+        if (user_login != null) {
+            return "redirect:/index/" + user_login.getId();
         }
-        return "redirect:/index/"+users.getId();
+        return "redirect:/login";
     }
 }

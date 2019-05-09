@@ -29,7 +29,7 @@ public class CarController {
     public String carIndex(Model model, @PathVariable("id") int id){
         model.addAttribute("id",id);
 
-        return "index/"+id;
+        return "index";
     }
     @GetMapping("/viewbooking")
     public String booking(){
