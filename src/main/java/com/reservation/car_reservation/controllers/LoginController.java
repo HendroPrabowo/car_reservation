@@ -26,10 +26,9 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model){
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password){
         User user = userService.login(username,password);
         if(user == null){
-            model.addAttribute("msg","Invalid account");
             return "login";
         }
         return "redirect:/index/"+user.getId();
